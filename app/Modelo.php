@@ -7,8 +7,11 @@ use App\Marca;
 
 class Modelo extends Model
 {
-    public function modeloMarca(){
-        //return $this->hasOne(Marca::class);
-        return $this->hasMany(Marca::class);
+    public function marca(){
+        return $this->hasOne(Marca::class);
+        
+    }
+    public function veiculo(){
+        return $this->belongsTo(Veiculo::class);
     }
 }
