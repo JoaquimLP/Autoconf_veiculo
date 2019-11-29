@@ -1,1 +1,4 @@
-<h1>to aqui</h1>
+@extends('layout.template')
+@section('body')
+    
+@endsection
