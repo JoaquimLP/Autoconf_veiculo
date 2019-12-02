@@ -41,14 +41,14 @@
     </div>
     <div>
         <label for="_anomodelo">Ano Modelo</label>
-        <input type="number" name="anomodelo" id="_anomodelo">
+        <input type="text" name="anomodelo" id="_anomodelo">
         @if($errors->has('anomodelo'))
         <div class="invalid-feedback"> {{  $errors->first('anomodelo') }}</div>
         @endif
     </div>
     <div>
         <label for="_anofabricacao">Ano Fabricação</label>
-        <input type="number" name="anofabricacao" id="_anofabricacao">
+        <input type="text" name="anofabricacao" id="_anofabricacao">
         @if($errors->has('anofabricacao'))
         <div class="invalid-feedback"> {{  $errors->first('anofabricacao') }}</div>
         @endif

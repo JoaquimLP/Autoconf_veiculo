@@ -28,8 +28,8 @@ class VeiculoStore extends FormRequest
             'chassi' => 'required|alpha_num|size:16',
             'marca' => 'required|numeric',
             'modelo' => 'required|numeric',
-            'anomodelo'=> 'required|numeric|date:year',
-            'anofabricacao'=> 'required|numeric|min:4|max:4',
+            'anomodelo'=> 'required|numeric|date_format:Y',
+            'anofabricacao'=> 'required|numeric|date_format:Y',
         ];
     }
 }
