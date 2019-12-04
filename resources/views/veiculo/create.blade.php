@@ -6,7 +6,7 @@
 @push('scripts')
     <script>
         $(document).ready(function(){
-            $('[name=placa]').mask('AAA-9S99');
+            $('[name=placa]').mask('SSS-0A00');
         });
     </script>
 @endpush  

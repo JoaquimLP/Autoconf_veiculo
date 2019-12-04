@@ -3,14 +3,14 @@
     @csrf
     <div>
         <label for="_placa">Placa</label>
-        <input type="text" name="placa" id="_placa" value="{{old('placa', '')}}">
+        <input class="text-uppercase" type="text" name="placa" id="_placa" value="{{old('placa', '')}}">
         @if($errors->has('placa'))
-        <div class="invalid-feedback"> {{  $errors->first('placa') }}</div>
+        <div class="invalid-feedback"> {{$errors->first('placa')}}</div>
         @endif
     </div>
     <div>
         <label for="_chassi">Chassi</label>
-        <input type="text" name="chassi" id="_chassi" value="{{old('chassi', '')}}">
+        <input class="text-uppercase" type="text" name="chassi" id="_chassi" value="{{old('chassi', '')}}">
         @if($errors->has('chassi'))
             <div class="invalid-feedback"> {{  $errors->first('chassi') }}</div>
         @endif
