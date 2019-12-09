@@ -16,7 +16,8 @@ class VeiculoController extends Controller
 
     public function create(Request $request){
         $marcas = Marca::all();
-        $modelos = Modelo::all();
+        $modelos = collect([]);
+        
         return view('veiculo.create', compact('marcas', 'modelos'));
     }
 

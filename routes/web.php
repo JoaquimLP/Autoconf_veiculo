@@ -22,4 +22,4 @@ Route::get('/veiculo/{id}/edit', '\App\Http\Controllers\VeiculoController@edit')
 Route::put('/veiculo/{id}/update', '\App\Http\Controllers\VeiculoController@update')->name('veiculo.update');
 Route::delete('/veiculo/{id}/destroi', '\App\Http\Controllers\VeiculoController@destroi')->name('veiculo.destroi');
 Route::get('/veiculo/{id}/show', '\App\Http\Controllers\VeiculoController@show')->name('veiculo.show');
-Route::post('/modelo/search', '\App\Http\Controllers\ModeloController@search')->name('veiculo.search');
+Route::post('/modelo/search', '\App\Http\Controllers\ModeloController@search')->name('modelo.search');
