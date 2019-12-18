@@ -8,6 +8,13 @@ use App\Modelo;
 class Veiculo extends Model
 {
     protected $table = "veiculo";
+
+    protected $fillable = [ "placa",
+                            "chassis",
+                            "modelo_id",
+                            "anomodelo",
+                            "anofabricacao"];
+
     public function modelo(){
         return $this->hasOne(Modelo::class);
     }

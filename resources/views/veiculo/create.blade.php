@@ -18,14 +18,14 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(data){
-                    var $el = $('[name=modelo]');
+                    var $el = $('[name=modelo_id]');
                     $el.empty();
                     $el.append($("<option></option>").attr("value", 0).attr('selected','').text('Modelo'));
                     $.each(data, function(value, key) {
                         $el.append($("<option></option>").attr("value", key.id).text(key.nome));
                     });
                     @if($errors->any())
-                        $('[name=modelo]').val('{{ old('modelo') }}');
+                        $('[name=modelo_id]').val('{{ old('modelo_id') }}');
                     @endif
                 }
             });
