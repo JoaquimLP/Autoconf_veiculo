@@ -1,21 +1,26 @@
+@if(empty($veiculo))
 <form action="{{route('veiculo.store')}}" method="post">
-        @method('POST')
-        @csrf
+    @method('POST')
+@else
+<form action="{{route('veiculo.update', $veiculo->id)}}" method="post">
+    @method('PUT')
+@endif
+    @csrf
     <div class="form-row">
         <div class="col-md-4 mb-3">
             <label for="_placa">Placa</label>
-            <input class="text-uppercase form-control" type="text" name="placa" id="_placa" value="{{old('placa', '')}}">
-            @if($errors->has('placa'))
-            <div class="invalid-feedback"> {{$errors->first('placa')}}</div>
+            <input class="text-uppercase form-control" type="text" name="placa" id="_placa" value="{{old('placa', !empty($veiculo->placa) ? $veiculo->placa : '')}}">
+            @if($errors->{$errorBag}->has('placa'))
+            <div class="invalid-feedback"> {{$errors->{$errorBag}->first('placa')}}</div>
             @endif
         </div>
     </div>
     <div class="form-row">
         <div class="col-md-4 mb-3">
             <label for="_chassis">Chassi</label>
-            <input class="text-uppercase form-control" type="text" name="chassis" id="_chassis" value="{{old('chassi', '')}}">
-            @if($errors->has('chassi'))
-                <div class="invalid-feedback"> {{  $errors->first('chassi') }}</div>
+            <input class="text-uppercase form-control" type="text" name="chassis" id="_chassis" value="{{old('chassis', !empty($veiculo->chassis) ? $veiculo->chassis : '')}}">
+            @if($errors->{$errorBag}->has('chassis'))
+                <div class="invalid-feedback"> {{  $errors->{$errorBag}->first('chassis') }}</div>
             @endif
         </div>
     </div>
@@ -25,11 +30,11 @@
             <select name="marca" class="form-control" id="_marca">
                 <option value="">--Seleciona--</option>
                 @foreach ($marcas as $marca)
-                    <option value="{{$marca->id}}" @if(old('marca', '' ) == $marca->id ) selected="" @endif>{{$marca->nome}}</option>
+                    <option value="{{$marca->id}}" @if(old('marca', !empty($veiculo->modelo->marca->id) ? $veiculo->modelo->marca->id : '') == $marca->id) selected="" @endif>{{$marca->nome}}</option>
                 @endforeach
             </select>
-            @if($errors->has('marca'))
-            <div class="invalid-feedback"> {{  $errors->first('marca') }}</div>
+            @if($errors->{$errorBag}->has('marca'))
+            <div class="invalid-feedback"> {{  $errors->{$errorBag}->first('marca') }}</div>
             @endif
         </div>
     </div>
@@ -39,34 +44,34 @@
             <select name="modelo_id" class="form-control" id="_modelo_id">
                 <option value="_modelo">--Seleciona--</option>
                 @foreach ($modelos as $modelo)
-                    <option value="{{$modelo->id}}" @if(old('modelo', '' ) == $modelo->id ) selected="" @endif>{{$modelo->nome}}</option>
+                    <option value="{{$modelo->id}}" @if(old('modelo', !empty($veiculo->modelo->id) ? $veiculo->modelo->id : '' ) == $modelo->id ) selected="" @endif>{{$modelo->nome}}</option>
                 @endforeach
             </select>
-            @if($errors->has('modelo'))
-            <div class="invalid-feedback"> {{  $errors->first('modelo') }}</div>
+            @if($errors->{$errorBag}->has('modelo'))
+            <div class="invalid-feedback"> {{  $errors->{$errorBag}->first('modelo') }}</div>
             @endif
         </div>
     </div>
     <div class="form-row">
         <div class="col-md-4 mb-3">
             <label for="_anomodelo">Ano Modelo</label>
-            <input type="text" class="form-control" name="anomodelo" id="_anomodelo" value="{{old('anomodelo', '')}}">
-            @if($errors->has('anomodelo'))
-                <div class="invalid-feedback"> {{  $errors->first('anomodelo') }}</div>
+            <input type="text" class="form-control" name="anomodelo" id="_anomodelo" value="{{old('anomodelo', !empty($veiculo->anomodelo) ? $veiculo->anomodelo : '' )}}">
+            @if($errors->{$errorBag}->has('anomodelo'))
+                <div class="invalid-feedback"> {{  $errors->{$errorBag}->first('anomodelo') }}</div>
             @endif
         </div>
     </div>
     <div class="form-row">
         <div class="col-md-4 mb-3">
             <label for="_anofabricacao">Ano Fabricação</label>
-            <input type="text" class="form-control" name="anofabricacao" id="_anofabricacao" value="{{old('anofabricacao', '')}}">
-            @if($errors->has('anofabricacao'))
-                <div class="invalid-feedback"> {{  $errors->first('anofabricacao') }}</div>
+            <input type="text" class="form-control" name="anofabricacao" id="_anofabricacao" value="{{old('anofabricacao', !empty($veiculo->anofabricacao) ? $veiculo->anofabricacao : '')}}">
+            @if($errors->{$errorBag}->has('anofabricacao'))
+                <div class="invalid-feedback"> {{  $errors->{$errorBag}->first('anofabricacao') }}</div>
             @endif
         </div>
     </div>
         <div>
-            <button type="submit">Salvar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
         </div>
     </div>
 </form>  

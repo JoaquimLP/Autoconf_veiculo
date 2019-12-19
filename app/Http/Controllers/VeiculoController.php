@@ -32,16 +32,31 @@ class VeiculoController extends Controller
         return redirect()->route('veiculo');
     }
 
-    public function edit(Request $request){
-        return view('veiculo.edit');
+    public function edit(Request $request, $id){
+
+        $veiculo = Veiculo::find($id);
+        $marcas = Marca::all();
+        $modelos = Modelo::where('id', $veiculo->modelo_id)->get();
+
+        return view('veiculo.edit', compact('marcas', 'modelos', 'veiculo'));
     }
 
-    public function update(Request $request){
-        //return view('veiculo.index');
+    public function update(Request $request, $id){
+        $veiculo = Veiculo::find($id);
+        $request->merge([
+            'placa' => preg_replace("/[^a-zA-Z0-9]+/", "", $request->placa)
+        ]);
+   
+        $veiculo->update($request->except(['_token', '_method', 'marca']));
+        //dd($request->except(['_token', '_method', 'marca']));
+        return redirect()->route('veiculo');
     }
 
-    public function destroi(Request $request){
-        //return view('veiculo.index');
+    public function destroi(Request $request, $id){
+        $veiculo = Veiculo::find($id);
+        $veiculo->delete();
+        
+        return redirect()->route('veiculo');
     }
 
     public function show(Request $request){

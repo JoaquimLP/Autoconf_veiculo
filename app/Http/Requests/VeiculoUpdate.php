@@ -4,9 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class VeiculoStore extends FormRequest
+class VeiculoUpdate extends FormRequest
 {
-    protected $errorBag = 'veiculoStore';
+    protected $errorBag = 'veiculoUpdate';
     /**
      * Determine if the user is authorized to make this request.
      *

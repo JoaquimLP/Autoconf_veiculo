@@ -20,6 +20,6 @@ Route::get('/veiculo/create', '\App\Http\Controllers\VeiculoController@create')-
 Route::post('/veiculo/store', '\App\Http\Controllers\VeiculoController@store')->name('veiculo.store');
 Route::get('/veiculo/{id}/edit', '\App\Http\Controllers\VeiculoController@edit')->name('veiculo.edit');
 Route::put('/veiculo/{id}/update', '\App\Http\Controllers\VeiculoController@update')->name('veiculo.update');
-Route::delete('/veiculo/{id}/destroi', '\App\Http\Controllers\VeiculoController@destroi')->name('veiculo.destroi');
+Route::delete('/veiculo/{id}/destroy', '\App\Http\Controllers\VeiculoController@destroi')->name('veiculo.destroy');
 Route::get('/veiculo/{id}/show', '\App\Http\Controllers\VeiculoController@show')->name('veiculo.show');
 Route::post('/modelo/search', '\App\Http\Controllers\ModeloController@search')->name('modelo.search');

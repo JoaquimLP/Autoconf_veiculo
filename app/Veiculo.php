@@ -16,6 +16,6 @@ class Veiculo extends Model
                             "anofabricacao"];
 
     public function modelo(){
-        return $this->hasOne(Modelo::class);
+        return $this->hasOne(Modelo::class, 'id', 'modelo_id');
     }
 }
