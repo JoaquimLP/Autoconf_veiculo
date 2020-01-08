@@ -1,6 +1,16 @@
 @extends('layout.template')
 @section('body')
+  <div class="row">
+    <div class="col">
+    <form method="GET" action="{{ route('veiculo') }}">
+      <input class="form-control" name="busca" value="{{ old('busca', isset($busca) ? $busca : '') }}">
+      <button class="btn btn-default" type="submit">Pesquisar</button>
+    </form>
+    </div>
+    <div class="col-auto">
     <a href="{{route('veiculo.create')}}" class="btn btn-primary">Adicionar veiculo</a>
+    </div>
+  </div>
     <table class="table ">
         <thead>
           <tr>
@@ -39,4 +49,5 @@
             @endforeach
         </tbody>
       </table>
+      {{ $veiculos->links() }}
 @endsection

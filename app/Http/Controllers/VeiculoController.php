@@ -12,8 +12,20 @@ use App\Veiculo;
 class VeiculoController extends Controller
 {
     public function index(Request $request){
-        $veiculos = Veiculo::all();
-        return view('veiculo.index', compact('veiculos'));
+
+        $busca = $request->query('busca');
+        $busca = isset($busca) ? $request->query('busca') : '';
+        
+        if(!empty($busca)){
+            $veiculos = Veiculo::where('placa', 'like', '%'.$busca.'%')->orWhereHas('modelo', function($query) use ($busca){
+              $query->where('nome', 'like', '%'.$busca.'%')->orWhereHas('marca', function($query) use ($busca){
+                  $query->where('nome', 'like', '%'.$busca.'%');
+              });  
+            })->paginate(1);
+        }else{
+            $veiculos = Veiculo::paginate(1);
+        }
+        return view('veiculo.index', compact('veiculos', 'busca'));
     }
 
     public function create(Request $request){
