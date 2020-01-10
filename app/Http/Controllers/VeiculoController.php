@@ -64,7 +64,7 @@ class VeiculoController extends Controller
         return redirect()->route('veiculo');
     }
 
-    public function destroi(Request $request, $id){
+    public function destroy(Request $request, $id){
         $veiculo = Veiculo::find($id);
         $veiculo->delete();
         

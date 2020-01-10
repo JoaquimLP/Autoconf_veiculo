@@ -1,4 +1,4 @@
 @extends('layout.template')
 @section('body')
-  <h1>To aqui</h1>
+  <a href="{{route('loja.create')}}" class="btn btn-primary">Adicionar uma Loja</a>
 @endsection
