@@ -6,7 +6,7 @@
             <label for="_nome">Loja</label>
             <input class="text-uppercase form-control @if($errors->has('nome')) is-invalid @endif" type="text" name="nome" id="_nome" value="{{old('nome', '')}}">
             @if($errors->has('nome'))
-            <div class="invalid-feedback"> {{$errors->first('nome')}}</div>
+                <div class="invalid-feedback"> {{$errors->first('nome')}}</div>
             @endif
         </div>
     </div>
