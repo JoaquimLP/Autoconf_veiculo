@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\LojaStore;
 use App\Loja;
+use App\Http\Requests\LojaUpdate;
 class LojaController extends Controller
 {
     public function indexLoja(){
-        return view('loja.index');
+        $lojas = Loja::paginate(2);
+        return view('loja.index', compact('lojas'));
     }
 
     public function createLoja(){
@@ -25,16 +27,25 @@ class LojaController extends Controller
         return redirect()->route('loja');
     }
 
-    public function editLoja(){
-        return view('loja.edit');
+    public function editLoja(Request $request, $id){
+        $loja = Loja::find($id);
+        return view('loja.edit', compact('loja'));
     }
 
-    public function updatetLoja(){
-       
+    public function updateLoja(LojaUpdate $request, $id){
+        $loja = Loja::find($id);
+        $request->merge([
+            'cnpj' => str_replace(['.', '/','-'], '', $request->cnpj),
+        ]);
+        $loja->update($request->except(['_token', '_method']));
+        return redirect()->route('loja');
     }
 
-    public function destroyLoja(){
-       
+    public function destroyLoja(Request $request, $id){
+        $loja = Loja::find($id);
+        
+        $loja->delete();
+        return redirect()->route('loja');
     }
 
 
