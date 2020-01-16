@@ -1,6 +1,6 @@
 @extends('layout.template')
 @section('body')
-  <div class="row">
+  <div class="row mt-5">
     <div class="col">
     <form method="GET" action="{{ route('loja') }}">
       <input class="form-control" name="busca" value="{{ old('busca', isset($busca) ? $busca : '') }}">

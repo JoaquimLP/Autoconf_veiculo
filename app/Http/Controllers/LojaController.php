@@ -8,9 +8,21 @@ use App\Loja;
 use App\Http\Requests\LojaUpdate;
 class LojaController extends Controller
 {
-    public function indexLoja(){
-        $lojas = Loja::paginate(2);
-        return view('loja.index', compact('lojas'));
+    public function indexLoja(Request $request){
+        $request->merge([
+            'busca' => str_replace(['.', '/','-'], '', $request->cnpj),
+        ]);
+        $busca = $request->query('busca');
+        $request = isset($busca) ? $request->query('busca'): '';
+        if (!empty($busca)) {
+            $lojas = Loja::where('nome', 'like', '%'.$busca.'%')
+                            ->orWhere('id', '=', $busca)
+                            ->orWhere('cnpj', 'like', $busca)->paginate(2);
+            //dd($busca);
+        } else {
+            $lojas = Loja::paginate(2);
+        }
+        return view('loja.index', compact('lojas', 'busca'));
     }
 
     public function createLoja(){
@@ -47,6 +59,4 @@ class LojaController extends Controller
         $loja->delete();
         return redirect()->route('loja');
     }
-
-
 }
