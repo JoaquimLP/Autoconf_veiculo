@@ -32,3 +32,8 @@ Route::post('/loja/store', '\App\Http\Controllers\LojaController@storeLoja')->na
 Route::get('/loja/{id}/edit', '\App\Http\Controllers\LojaController@editLoja')->name('loja.edit');
 Route::put('/loja/{id}/update', '\App\Http\Controllers\LojaController@updateLoja')->name('loja.update');
 Route::delete('/loja/{id}/destroy', '\App\Http\Controllers\LojaController@destroyLoja')->name('loja.destroy');
+
+//Endereco
+Route::get('/loja-endereco', '\App\Http\Controllers\EnderecoController@indexLoja')->name('loja-endereco');
+Route::get('/loja-endereco/create', '\App\Http\Controllers\EnderecoController@createLoja')->name('loja-endereco.create');
+Route::post('/loja-endereco/store', '\App\Http\Controllers\EnderecoController@storeLoja')->name('loja-endereco.store');
