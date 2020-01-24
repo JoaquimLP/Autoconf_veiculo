@@ -6,6 +6,7 @@
     <script>
         $(document).ready(function(){	
             $("#_cnpj").mask("99.999.999/9999-99");
+            $('#_cep').mask('99999-999');
         });
     </script>
 @endpush  

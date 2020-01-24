@@ -36,7 +36,7 @@ class CreateEstadoCidadeEnderecoTable extends Migration
         });
         Schema::create('endereco', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('logadora', 255);
+            $table->string('logradoura', 255);
             $table->string('cep', 8);
             $table->string('numeroInicio');
             $table->string('numeroFim');

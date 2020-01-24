@@ -18,7 +18,7 @@ class Endereco extends Migration
         Schema::create('endereco', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('logadouro', 255);
-            $table->string('cep', 8);
+            $table->string('cep', 8)->key();
             $table->unsignedBigInteger('bairro_id');
             $table->foreign('bairro_id')
                         ->references('id')->on('bairro');
