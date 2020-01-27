@@ -10,7 +10,7 @@ class EnderecoController extends Controller
 
     public function search(Request $request){
         $request->merge([
-            'cep' => str_replace(['-'], '', $request->cep),
+            'cep' =>  preg_replace("/[0-9]+/", "",  $request->cep),
         ]);
         $cep = $request->query('cep');
         $request = isset($cep) ? $request->query('cep'): '';
