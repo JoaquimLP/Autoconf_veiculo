@@ -30,13 +30,13 @@ class LojaController extends Controller
     }
 
     public function storeLoja(LojaStore $request){
-        //dd($request->all());
-        $request->merge([
+        dd($request->all());
+        /* $request->merge([
             'cnpj' => str_replace(['.', '/','-'], '', $request->cnpj),
         ]);
         $loja = Loja::insert($request->except(['_token', '_method']));
         //dd($request->except(['_token', '_method', 'marca']));
-        return redirect()->route('loja');
+        return redirect()->route('loja'); */
     }
 
     public function editLoja(Request $request, $id){
