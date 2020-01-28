@@ -8,10 +8,12 @@ use App\Loja;
 
 class Endereco extends Model
 {
-    protected $table = "endereco"; 
+    protected $table = "endereco";
+
     public function bairro(){
-        return $this->hasOne(Bairro::class, 'id', 'bairro_id');
+        return $this->belongsTo(Bairro::class);
     }
+
     public function loja(){
         return $this->belongsTo(Loja::class);
     }

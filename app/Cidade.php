@@ -8,11 +8,13 @@ use App\Bairro;
 
 class Cidade extends Model
 {
-    protected $table = "cidade"; 
+    protected $table = "cidade";
+
     public function estado(){
-        return $this->hasOne(Estado::class, 'id', 'estado_id');
+        return $this->belongsTo(Estado::class);
     }
-    public function bairro(){
-        return $this->belongsTo(Bairro::class);
+
+    public function bairros(){
+        return $this->hasMany(Bairro::class, 'cidade_id', 'id');
     }
 }

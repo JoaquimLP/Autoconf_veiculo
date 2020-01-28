@@ -9,7 +9,7 @@ class Estado extends Model
 {
     protected $table = "estado";
 
-    public function cidade(){
-        return $this->belongsTo(Cidade::class);
+    public function cidades(){
+        return $this->hasMany(Cidade::class, 'estado_id', 'id');
     }
 }

@@ -9,10 +9,12 @@ use App\Endereco;
 class Bairro extends Model
 {
     protected $table = "bairro"; 
+
     public function cidade(){
-        return $this->hasOne(Cidade::class, 'id', 'cidade_id');
+        return $this->belongsTo(Cidade::class);
     }
-    public function endereco(){
-        return $this->belongsTo(Endereco::class);
+
+    public function enderecos(){
+        return $this->hasMany(Endereco::class, 'bairro_id', 'id');
     }
 }
