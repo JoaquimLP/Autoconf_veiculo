@@ -25,7 +25,7 @@
     <div class="form-row">
         <div class="col-md-4 mb-3">
             <label for="_cep">CEP</label>
-            <input class="form-control @if($errors->{$errorBag}->has('cep')) is-invalid @endif" type="text" name="cep" id="_cep" value="{{old('cep', !empty($loja->cep) ? $loja->cep : '')}}">
+            <input class="form-control @if($errors->{$errorBag}->has('cep')) is-invalid @endif" type="text" name="cep" id="_cep" value="{{old('cep', !empty($loja->endereco->cep) ? $loja->endereco->cep : '')}}">
             @if($errors->{$errorBag}->has('cep'))
                 <div class="invalid-feedback"> {{  $errors->{$errorBag}->first('cep') }}</div>
             @endif
@@ -34,14 +34,14 @@
     <div class="form-row">
         <div class="col-md-4 mb-3">
             <label for="_estado">Estado</label>
-            <input class="form-control @if($errors->{$errorBag}->has('estado')) is-invalid @endif" type="text" name="estado" id="_estado" value="{{old('estado', !empty($loja->estado) ? $loja->estado : '')}}">
+            <input class="form-control @if($errors->{$errorBag}->has('estado')) is-invalid @endif" type="text" name="estado" id="_estado" value="{{old('estado', !empty($loja->enderecos->bairros->cidades->estados->nome) ? $loja->enderecos->bairros->cidades->estados->nome : '')}}">
             @if($errors->{$errorBag}->has('estado'))
                 <div class="invalid-feedback"> {{  $errors->{$errorBag}->first('estado') }}</div>
             @endif
         </div>
         <div class="col-md-4 mb-3">
             <label for="_cidade">Cidade</label>
-            <input class="form-control @if($errors->{$errorBag}->has('cidade')) is-invalid @endif" type="text" name="cidade" id="_cidade" value="{{old('cidade', !empty($loja->cidade) ? $loja->cidade : '')}}">
+            <input class="form-control @if($errors->{$errorBag}->has('cidade')) is-invalid @endif" type="text" name="cidade" id="_cidade" value="{{old('cidade', !empty($loja->enderecos->bairros->cidades->nome) ? $loja->enderecos->bairros->cidades->nome : '')}}">
             @if($errors->{$errorBag}->has('cidade'))
                 <div class="invalid-feedback"> {{ $errors->{$errorBag}->first('cidade')}}</div>
             @endif
@@ -52,14 +52,14 @@
         
         <div class="col-md-4 mb-3">
             <label for="_bairro">bairro</label>
-            <input class="form-control @if($errors->{$errorBag}->has('bairro')) is-invalid @endif" type="text" name="bairro" id="_bairro" value="{{old('bairro', !empty($loja->bairro) ? $loja->bairro : '')}}">
+            <input class="form-control @if($errors->{$errorBag}->has('bairro')) is-invalid @endif" type="text" name="bairro" id="_bairro" value="{{old('bairro', !empty($loja->enderecos->bairros->nome) ? $loja->enderecos->bairros->nome : '')}}">
             @if($errors->{$errorBag}->has('bairro'))
                 <div class="invalid-feedback"> {{ $errors->{$errorBag}->first('bairro')}}</div>
             @endif
         </div>
         <div class="col-md-4 mb-3">
             <label for="_endereco">Endereco</label>
-            <input class="form-control @if($errors->{$errorBag}->has('endereco')) is-invalid @endif" type="text" name="endereco" id="_endereco" value="{{old('endereco', !empty($loja->endereco) ? $loja->endereco : '')}}">
+            <input class="form-control @if($errors->{$errorBag}->has('endereco')) is-invalid @endif" type="text" name="endereco" id="_endereco" value="{{old('endereco', !empty($loja->enderecos) ? $loja->enderecos : '')}}">
             @if($errors->{$errorBag}->has('endereco'))
                 <div class="invalid-feedback"> {{ $errors->{$errorBag}->first('endereco')}}</div>
             @endif

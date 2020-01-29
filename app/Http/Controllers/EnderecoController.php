@@ -47,7 +47,7 @@ class EnderecoController extends Controller
         $cep = $request->query('cep');
         $request = isset($cep) ? $request->query('cep'): '';
         $bairro = Bairro::whereHas('enderecos', function($query) use ($cep){
-                $query->where('cep', 'like', '%'.$cep.'%');
+                $query->where('cep', '=', $cep);
             })->get();
         return response()->json($bairro);
     }
@@ -57,7 +57,7 @@ class EnderecoController extends Controller
         ]);
         $cep = $request->query('cep');
         $request = isset($cep) ? $request->query('cep'): '';
-        $endereco = Endereco::where('cep', '=', '%'.$cep.'%')->get();
+        $endereco = Endereco::where('cep', '=', $cep)->get();
         return response()->json($endereco);
     }
    
