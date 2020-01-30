@@ -13,7 +13,7 @@
                     type: 'post',
                     url: '{{ route("endereco.estado.search") }}',
                     dataType: 'json',
-                    //crossDomain: true,
+                    //async: false,
                     data: {cep: $('[name=cep]').val()},
                     //contentType: "application/json",
                     headers: {
@@ -21,9 +21,60 @@
                     },
                     success: function(data){
                         var $el = $('[name=estado]');
-                        var estado = val(data);
-                        console.log(estado);
-                        $('[name=estado]').val(estado);
+                        //var data = JSON.parse(JSON.stringify(data));
+                        console.log(data.nome);
+                        $('[name=estado]').val(data.nome);
+                    }
+                });
+                $.ajax({
+                    type: 'post',
+                    url: '{{ route("endereco.cidade.search") }}',
+                    dataType: 'json',
+                    //async: false,
+                    data: {cep: $('[name=cep]').val()},
+                    //contentType: "application/json",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data){
+                        var $el = $('[name=cidade]');
+                        //var data = JSON.parse(JSON.stringify(data));
+                        console.log(data.nome);
+                        $('[name=cidade]').val(data.nome);
+                    }
+                });
+                $.ajax({
+                    type: 'post',
+                    url: '{{ route("endereco.bairro.search") }}',
+                    dataType: 'json',
+                    //async: false,
+                    data: {cep: $('[name=cep]').val()},
+                    //contentType: "application/json",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data){
+                        var $el = $('[name=bairro]');
+                        //var data = JSON.parse(JSON.stringify(data));
+                        console.log(data);
+                        $('[name=bairro]').val(data.nome);
+                    }
+                });
+                $.ajax({
+                    type: 'post',
+                    url: '{{ route("endereco.search") }}',
+                    dataType: 'json',
+                    //async: false,
+                    data: {cep: $('[name=cep]').val()},
+                    //contentType: "application/json",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data){
+                        var $el = $('[name=endereco]');
+                        //var data = JSON.parse(JSON.stringify(data));
+                        console.log(data.logadora);
+                        $('[name=endereco]').val(data.logadora);
                     }
                 });
             })
