@@ -24,7 +24,7 @@ class EnderecoController extends Controller
                     $query->where('cep', 'like', '%'.$cep.'%');
                 });
             });
-        })->get();
+        })->get('nome');
         return response()->json($estados);
     }
     public function searchCidade(Request $request){
@@ -48,7 +48,7 @@ class EnderecoController extends Controller
         $request = isset($cep) ? $request->query('cep'): '';
         $bairro = Bairro::whereHas('enderecos', function($query) use ($cep){
                 $query->where('cep', '=', $cep);
-            })->get();
+            })->get(['nome']);
         return response()->json($bairro);
     }
     public function search(Request $request){
