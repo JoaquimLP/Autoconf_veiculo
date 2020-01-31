@@ -23,7 +23,12 @@
                         var $el = $('[name=estado]');
                         //var data = JSON.parse(JSON.stringify(data));
                         console.log(data.nome);
-                        $('[name=estado]').val(data.nome);
+                        if (data != 0) {
+                            $('[name=estado]').val(data.nome);
+                        } else {
+                            $('[name=estado]').val('Teste');
+                        }
+                        
                     }
                 });
                 $.ajax({
