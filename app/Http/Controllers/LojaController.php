@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\LojaStore;
 use App\Loja;
+use App\Endereco;
 use App\Http\Requests\LojaUpdate;
 class LojaController extends Controller
 {
@@ -30,13 +31,33 @@ class LojaController extends Controller
     }
 
     public function storeLoja(LojaStore $request){
-        dd($request->all());
-        /* $request->merge([
+        
+        $request->merge([
             'cnpj' => str_replace(['.', '/','-'], '', $request->cnpj),
+            'cep' => str_replace(['-'], '', $request->cep),
         ]);
-        $loja = Loja::insert($request->except(['_token', '_method']));
+        $loja = Loja::where('cnpj', $request->cnpj)->get();
+        $endereco = Endereco::where('cep', $request->cep)->first();
+        if (count($loja)!=0) {
+            return redirect()
+                    ->back()
+                    ->with('error', 'Ja existe uma Loja cadastrado para essa empresa com esse CNPJ');
+        } else {
+            $novo = new Loja;
+
+            $novo->nome = $request->nome;
+            $novo->cnpj = $request->cnpj;
+            $novo->logradouro_id = $endereco->id;
+            $novo->numero = $request->numero;
+            $novo->complemento = $request->complemento;
+            $novo->save();
+            return redirect()
+                    ->route('loja')
+                    ->with('success', 'Loja cadastrado com sucesso');  
+        }
+        
         //dd($request->except(['_token', '_method', 'marca']));
-        return redirect()->route('loja'); */
+        return redirect()->route('loja'); 
     }
 
     public function editLoja(Request $request, $id){

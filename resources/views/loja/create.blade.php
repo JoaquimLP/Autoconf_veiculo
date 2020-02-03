@@ -1,5 +1,6 @@
 @extends('layout.template')
 @section('body')
+    @include('includes.alert')
     @include('loja.partials._form', ['errorBag' => 'LojaStore']) 
 @endsection
 @push('scripts')

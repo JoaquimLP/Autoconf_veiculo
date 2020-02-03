@@ -1,7 +1,9 @@
 @extends('layout.template')
 @section('body')
+
   <div class="row mt-5">
     <div class="col">
+      @include('includes.alert')
     <form method="GET" action="{{ route('loja') }}">
       <input class="form-control" name="busca" value="{{ old('busca', isset($busca) ? $busca : '') }}">
       <button class="btn btn-default" type="submit">Pesquisar</button>
