@@ -9,6 +9,6 @@ class Loja extends Model
 {
     //protected $fillable = [ "nome", "cnpj"];
     public function endereco(){
-        return $this->hasOne(Endereco::class, 'id', 'endereco_id');
+        return $this->hasOne(Endereco::class, 'id', 'logradouro_id');
     }
 }

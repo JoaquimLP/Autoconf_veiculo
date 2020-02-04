@@ -79,8 +79,8 @@
                     success: function(data){
                         var $el = $('[name=endereco]');
                         //var data = JSON.parse(JSON.stringify(data));
-                        console.log(data.logadora);
-                        $('[name=endereco]').val(data.logadora);
+                        //console.log(data.logadora);
+                        $('[name=endereco]').val(data.logradoura);
                     }
                 });
             })

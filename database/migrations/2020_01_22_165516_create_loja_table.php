@@ -18,9 +18,10 @@ class CreateLojaTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome', 150);
             $table->string('cnpj', 14)->unique();
-            $table->unsignedBigInteger('logradouro_id');
-            $table->foreign('logradouro_id')
-                        ->references('id')->on('endereco');
+            $table->string('cep', 8);
+            $table->string('estado', 50);
+            $table->string('cidade', 50);
+            $table->string('logradouro', 255);
             $table->string('numero');            
             $table->string('complemento', 50);            
             $table->timestamps();

@@ -47,7 +47,10 @@ class LojaController extends Controller
 
             $novo->nome = $request->nome;
             $novo->cnpj = $request->cnpj;
-            $novo->logradouro_id = $endereco->id;
+            $novo->cep = $request->cep;
+            $novo->estado = $request->estado;
+            $novo->cidade = $request->cidade;
+            $novo->logradouro = $request->endereco;
             $novo->numero = $request->numero;
             $novo->complemento = $request->complemento;
             $novo->save();
