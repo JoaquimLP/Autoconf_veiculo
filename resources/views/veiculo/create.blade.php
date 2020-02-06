@@ -25,7 +25,7 @@
                         $el.append($("<option></option>").attr("value", key.id).text(key.nome));
                     });
                     @if($errors->any())
-                        $('[name=modelo_id]').val('{{ old('modelo_id') }}');
+                        $('[name=modelo_id]').val('{{ old("modelo_id") }}');
                     @endif
                 }
             });

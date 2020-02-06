@@ -21,6 +21,7 @@ class CreateLojaTable extends Migration
             $table->string('cep', 8);
             $table->string('estado', 50);
             $table->string('cidade', 50);
+            $table->string('bairro', 50);
             $table->string('logradouro', 255);
             $table->string('numero');            
             $table->string('complemento', 50);            

@@ -50,6 +50,7 @@ class LojaController extends Controller
             $novo->cep = $request->cep;
             $novo->estado = $request->estado;
             $novo->cidade = $request->cidade;
+            $novo->bairro = $request->bairro;
             $novo->logradouro = $request->endereco;
             $novo->numero = $request->numero;
             $novo->complemento = $request->complemento;
@@ -72,6 +73,7 @@ class LojaController extends Controller
         $loja = Loja::find($id);
         $request->merge([
             'cnpj' => str_replace(['.', '/','-'], '', $request->cnpj),
+            'cep' => str_replace(['-'], '', $request->cep),
         ]);
         $loja->update($request->except(['_token', '_method']));
         return redirect()->route('loja');

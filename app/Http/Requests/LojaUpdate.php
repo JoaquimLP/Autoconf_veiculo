@@ -27,7 +27,7 @@ class LojaUpdate extends FormRequest
         return [
             'nome' => 'required|string|max:150',
             'cnpj' => 'required|string|size:18',
-            'cep' => 'required|numeric',
+            'cep' => 'required|size:9',
             'estado' => 'required|string|max:50',
             'cidade' => 'required|string|max:50',
             'bairro' => 'required|string|max:50',
