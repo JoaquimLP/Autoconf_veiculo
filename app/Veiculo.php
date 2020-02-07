@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Modelo;
+use App\Loja;
 
 class Veiculo extends Model
 {
@@ -17,5 +18,8 @@ class Veiculo extends Model
 
     public function modelo(){
         return $this->hasOne(Modelo::class, 'id', 'modelo_id');
+    }
+    public function loja(){
+        return $this->hasOne(Loja::class, 'id', 'loja_id');
     }
 }

@@ -19,6 +19,7 @@
             <th scope="col">Chassi</th>
             <th scope="col">Marca</th>
             <th scope="col">Modelo</th>
+            <th scope="col">Loja</th>
             <th scope="col">Ações</th>
           </tr>
         </thead>
@@ -30,6 +31,7 @@
                     <td>{{$veiculo->chassis}}</td>
                     <td>{{$veiculo->modelo->marca->nome}}</td>
                     <td>{{$veiculo->modelo->nome}}</td>
+                    <td>{{$veiculo->loja->nome}}</td>
                     <td>
                       <div class="row">
                         <div class="col-6">
