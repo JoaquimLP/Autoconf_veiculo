@@ -42,3 +42,7 @@ Route::get('/loja-endereco', '\App\Http\Controllers\EnderecoController@indexLoja
 Route::get('/loja-endereco/create', '\App\Http\Controllers\EnderecoController@createLoja')->name('loja-endereco.create');
 Route::post('/loja-endereco/store', '\App\Http\Controllers\EnderecoController@storeLoja')->name('loja-endereco.store');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
