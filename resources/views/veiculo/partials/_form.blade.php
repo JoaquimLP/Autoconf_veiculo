@@ -6,20 +6,7 @@
     @method('PUT')
 @endif
     @csrf
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="_loja">Loja</label>
-            <select name="loja" class="form-control @if($errors->{$errorBag}->has('loja')) is-invalid @endif" id="_loja">
-                <option value="">--Seleciona--</option>
-                @foreach ($lojas as $loja)
-                    <option value="{{$loja->id}}" @if(old('loja', !empty($veiculo->loja_id) ? $veiculo->loja_id : '') == $loja->id) selected="" @endif>{{$loja->nome}}</option>
-                @endforeach
-            </select>
-            @if($errors->{$errorBag}->has('loja'))
-            <div class="invalid-feedback"> {{  $errors->{$errorBag}->first('loja') }}</div>
-            @endif
-        </div>
-    </div>
+  
     <div class="form-row">
         <div class="col-md-4 mb-3">
             <label for="_placa">Placa</label>

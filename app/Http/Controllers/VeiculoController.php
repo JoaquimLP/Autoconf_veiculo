@@ -9,22 +9,23 @@ use App\Marca;
 use App\Modelo;
 use App\Veiculo;
 use App\Loja;
+use Auth;
 
 class VeiculoController extends Controller
 {
     public function index(Request $request){
-
+        $user = auth()->user();
         $busca = $request->query('busca');
         $busca = isset($busca) ? $request->query('busca') : '';
         
         if(!empty($busca)){
-            $veiculos = Veiculo::where('placa', 'like', '%'.$busca.'%')->orWhereHas('modelo', function($query) use ($busca){
+            $veiculos = Veiculo::where('loja_id', $user)->orWhere('placa', 'like', '%'.$busca.'%')->orWhereHas('modelo', function($query) use ($busca){
               $query->where('nome', 'like', '%'.$busca.'%')->orWhereHas('marca', function($query) use ($busca){
                   $query->where('nome', 'like', '%'.$busca.'%');
               });  
             })->paginate(1);
         }else{
-            $veiculos = Veiculo::paginate(1);
+            $veiculos = Veiculo::where('loja_id', $user->loja_id)->paginate(1);
         }
         return view('veiculo.index', compact('veiculos', 'busca'));
     }
@@ -37,6 +38,7 @@ class VeiculoController extends Controller
     }
 
     public function store(VeiculoStore $request){
+        $user = auth()->user();
         $request->merge([
             'placa' => preg_replace("/[^a-zA-Z0-9]+/", "", $request->placa)
         ]);
@@ -48,7 +50,8 @@ class VeiculoController extends Controller
         $novo->chassis = $request->chassis;
         $novo->anofabricacao = $request->anofabricacao;
         $novo->anomodelo = $request->anomodelo;
-        $novo->loja_id = $request->loja;
+        $novo->loja_id = $user->loja_id;
+        $novo->user_id = $user->id;
         $novo->save();
         return redirect()->route('veiculo');
     }
@@ -64,6 +67,7 @@ class VeiculoController extends Controller
     }
 
     public function update(Request $request, $id){
+
         $veiculo = Veiculo::find($id);
         $request->merge([
             'placa' => preg_replace("/[^a-zA-Z0-9]+/", "", $request->placa)

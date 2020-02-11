@@ -28,7 +28,7 @@ class VeiculoStore extends FormRequest
             'placa' => 'required|size:8',
             'chassis' => 'required|alpha_num|size:16',
             'marca' => 'required|numeric',
-            'loja' => 'required|numeric',
+          
             'modelo_id' => 'required|numeric',
             'anomodelo'=> 'required|numeric|date_format:Y',
             'anofabricacao'=> 'required|numeric|date_format:Y',

@@ -14,10 +14,11 @@ class dataBaseUser extends Seeder
     public function run()
     {
         App\User::create([
-            'name'          =>  'Joaquim Lopes' ,
-            'email'     => 'joaquim@gmail.com',
+            'name'          =>  'Joaquim Pena33' ,
+            'email'     => 'joaquim2013@gmail.com',
             'password'     => bcrypt('12345678'),
             'loja_id' => '1',
+            'perfil_id' => '2',
         ]);
     }
 }
