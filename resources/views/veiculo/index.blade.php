@@ -1,6 +1,6 @@
 @extends('layout.template')
 @section('body')
-  <div class="row">
+  <div class="row col-12">
     <div class="col">
     <form method="GET" action="{{ route('veiculo') }}">
       <input class="form-control" name="busca" value="{{ old('busca', isset($busca) ? $busca : '') }}">
@@ -35,9 +35,12 @@
                     <td>
                       <div class="row">
                         <div class="col-6">
+                        <a href="{{ route('veiculo.galeria', $veiculo->id) }}" class="btn btn-success">Adicionar fotos</a>
+                        </div>
+                        <div class="col-4 pl-0">
                         <a href="{{ route('veiculo.edit', $veiculo->id) }}" class="btn btn-secondary">Editar</a>
                         </div>
-                        <div class="col-6">
+                        <div class="col-2 pl-0">
                           <form action="{{route('veiculo.destroy',  $veiculo->id)}}" method="POST" novalidate>
                             @method('DELETE')
                             @csrf
