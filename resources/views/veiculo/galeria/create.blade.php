@@ -2,12 +2,12 @@
 @section('body')
     <div class="row mt-5">
         <form action="{{route('veiculo.save', $veiculo->id)}}" method="POST" enctype="multipart/form-data">
-            @method('POST')
+        
             @csrf
             <div class="form-row">
                 <div class="col-md-12 mb-3">
-                    <label for="_anomodelo">Adicionar Fotos</label>
-                    <input type="file" name="id" class="form-control" value="">
+                    <label for="_image">Adicionar Fotos</label>
+                    <input type="file" name="image[]" multiple class="form-control-file" id="_image" value="{{old('image','')}}">
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Salvar</button>

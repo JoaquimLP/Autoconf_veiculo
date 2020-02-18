@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/endereco/search', '\App\Http\Controllers\EnderecoController@search')->name('endereco.search');
 
     Route::get('/veiculo/{id}/galeria', '\App\Http\Controllers\GaleriaController@galeria')->name('veiculo.galeria');
-    Route::get('/veiculo/{id}/save', '\App\Http\Controllers\GaleriaController@save')->name('veiculo.save');
+    Route::post('/veiculo/{id}/save', '\App\Http\Controllers\GaleriaController@save')->name('veiculo.save');
 });
 
 Auth::routes();
