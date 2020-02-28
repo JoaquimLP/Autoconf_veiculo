@@ -10,7 +10,9 @@ class GaleriaController extends Controller
 {
     public function galeria(Request $request, $id){
         $veiculo = Veiculo::find($id);
-        return view('veiculo.galeria.create', compact('veiculo'));
+        $galerias = Galeria::where("veiculo_id", $veiculo->id)->get();
+        //dd($galerias);
+        return view('veiculo.galeria.create', compact('veiculo', 'galerias'));
     }
     public function save(Request $request, $id){
         $veiculo = Veiculo::find($id);
@@ -25,6 +27,7 @@ class GaleriaController extends Controller
             $image->save();
             unset($image);
         }
+       
         return redirect()
                     ->route('veiculo')
                     ->with('success', 'Produto Atualizado com sucesso');  

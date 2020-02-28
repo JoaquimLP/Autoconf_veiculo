@@ -22,4 +22,7 @@ class Veiculo extends Model
     public function loja(){
         return $this->hasOne(Loja::class, 'id', 'loja_id');
     }
+    public function galeria(){
+        return $this->hasMany(Galeria::class);
+    }
 }
