@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
         return redirect('http://localhost:8000/oauth/authorize?'.$query);
     });
 
-   /*Route::get('/callback', function (Request $request) {
+   Route::get('', function (Request $request) {
        
         $http = new GuzzleHttp\Client;
     
@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
         ]);
     
         return json_decode((string) $response->getBody(), true);
-    });*/
+    });
 });
 
 Auth::routes();
