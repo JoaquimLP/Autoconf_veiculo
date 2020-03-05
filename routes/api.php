@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/veiculo/search', '\App\Http\Controllers\Api\VeiculoController@search');
+    Route::post('/veiculo/{}', '\App\Http\Controllers\Api\VeiculoController@getVeiculo');
 });

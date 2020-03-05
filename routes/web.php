@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
         return redirect('http://localhost:8000/oauth/authorize?'.$query);
     });
 
-   Route::get('', function (Request $request) {
+    /*Route::get('/callback', function (Request $request) {
        
         $http = new GuzzleHttp\Client;
     
@@ -63,12 +63,12 @@ Route::group(['middleware' => ['auth']], function () {
                 'client_id' => '3',
                 'client_secret' => 'xosQ9Hq2huGluJwBYfNmDaBeekrxdmpd1jzmvZZ9',
                 'redirect_uri' => 'http://localhost:8000/code/',
-                'code' => 'def5020087ff784ecd372c755a92288f67531cc8af561549d7297500677cd5e9b871e3bae6086326ec53cbfa8ee5d9c4ee8b57d905e8ce6e92059cc8c407617562bb0e4ee109869d14de24402bdbdb55ac451baff2c28ea1d30b0dd25acb90134ea11a3ac9c6430998662823a750ab0c904d6195967e6c3a76aea2a982ffc46c42c5ab66da4202c0197f8faacea478d3064033b47f6b17d2966ba49dae982b6e6db876e327e3e6e5750c5369545feb743cc085fd485ef866f2683f9423b29cf2580dd4984fe883bdde9151cb853e572782ae6f8303dbd6c0e100cef8b0b2deda954ae100c883f96b5b34a8525e09c1309da12198a9a01eda7f4b812deaab3bf6dbed6da45c9e697f81027c70f7785666873b5c37d9fda8c92a05afc574afe81a512496a84b9fb953202bc08654483444a66eb31b8926bdc86604058ae2c0b948964b1c4727bebc582d79d740d5ab4cb9f0027ac034160873711f8c04',
+                'code' => 'def502000bd9976724a8b1e3dfdc4e4aa01a5329319b7b7ba0ac7f4d6b9bb092c609bc3ba004e5a25d34e305f7bffdf8b0123d24ddc30bd963adf26b788fe264f4b55e9f43d8d04b22d8f759c6dc189468caebb41e4129e57a17f0180e285f3aeb960df1984d24b4d1a0297649ca6aead50b764c4f450266e7134fcc4aaf9c4a466877221cd9d660c6132ba2368567618203067f21162ec8c57b1c35c2a0bb69c24a61bc50799c166ca63e4d1b76917380d50daa275ae806e59c33ca1878393e843fb8684a5fb4c8dbb4caacaa79fdf2750cf2adb439db74a89728b1e5a54abfba9a865f856e6df743710165e1ce79b7a8dbdf9103c45c9b7d36aab4c74660e60853e462dc99e74dad4bff8c23d01819bcf5ca807a83b0988907464d3b8a816a7c3caf672dc8e8bb92da48ca48ab5fabbe171b1792db4ea015d537d1d43a77886bf855894e3095692fe6a3fb31d737ce0de66c81bea78cbd226a13fc',
             ],
         ]);
     
         return json_decode((string) $response->getBody(), true);
-    });
+    });*/
 });
 
 Auth::routes();
