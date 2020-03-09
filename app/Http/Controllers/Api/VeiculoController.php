@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Veiculo;
+use App\Galeria;
 use Validator;
 
 class VeiculoController extends Controller
@@ -22,7 +23,8 @@ class VeiculoController extends Controller
             ->join('lojas', 'lojas.id', '=', 'veiculo.loja_id')
             ->join('modelo', 'modelo.id', '=', 'veiculo.modelo_id')
             ->join('marca', 'marca.id', '=', 'modelo.marca_id')
-            ->join('galerias', 'veiculo.id', '=', 'galerias.veiculo_id')
+            ->join('galerias', 'galerias.veiculo_id', '=', 'veiculo.id')
+            ->where('galerias.ordem', '=', 0)
             ->where('lojas.cnpj', $request->cnpj)
             ->select(
             'veiculo.id',
@@ -39,10 +41,13 @@ class VeiculoController extends Controller
         return response()->json($veiculos);
     }
 
-    public function getVeiculo(Request $request){
+    public function getVeiculo(Request $request, $id){
+        $veiculo = Veiculo::find($id);
+        $galerias = Galeria::where('veiculo_id', $veiculo->id)->get();
 
-
-
+        foreach($galerias as $galeria){
+            each($galeria);
+        }
     }
 
 }
