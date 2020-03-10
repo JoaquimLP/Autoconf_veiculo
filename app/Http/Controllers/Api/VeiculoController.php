@@ -43,11 +43,25 @@ class VeiculoController extends Controller
 
     public function getVeiculo(Request $request, $id){
         $veiculo = Veiculo::find($id);
-        $galerias = Galeria::where('veiculo_id', $veiculo->id)->get();
+        $veiculos = DB::table('veiculo')
+        ->join('lojas', 'lojas.id', '=', 'veiculo.loja_id')
+        ->join('modelo', 'modelo.id', '=', 'veiculo.modelo_id')
+        ->join('marca', 'marca.id', '=', 'modelo.marca_id')
+        ->where('veiculo.id', $veiculo->id)
+        ->select(
+        'veiculo.id',
+        'veiculo.anomodelo',
+        'veiculo.anofabricacao',
+        'lojas.nome as loja_nome',
+        'marca.nome as marca_nome',
+        'modelo.nome as modelo_nome',
+        )->get();
+        
+        $galerias = Galeria::where('veiculo_id', $veiculo->id)->select(
+            'galerias.path as fotos'
+            )->get();
 
-        foreach($galerias as $galeria){
-            each($galeria);
-        }
+        return response()->json([$veiculos, $galerias]);
     }
 
 }
